@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>BusMapper</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"></meta>
+		<meta charset="utf-8"></meta>
+		<style>
+html, body, #map {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
+		<script
+			src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry"></script>
+
+
+		<h:outputScript library="js" name="busmapper.js"></h:outputScript>
+	</h:head>
+	<h:body>
+
+
+		<h:form id="formId">
+
+	
+
+			<h:inputHidden id="lat" name="lat" value="#{buttonView.lat}">
+
+			</h:inputHidden>
+
+
+			<h:inputHidden id="lon" name="lon" value="#{buttonView.lon}" />
+
+<h:inputHidden id="nextStop" name="nextStop" value="#{buttonView.nextStop}">
+
+			</h:inputHidden>
+
+
+
+
+<h:outputText id="txt_countt" value="#{buttonView.number}" />
+    <p:poll interval="3" listener="#{buttonView.increment}" update="txt_countt" />
+    <h:outputText id="txt_count" value="#{buttonView.lat}" />
+    <p:poll onstart="getVars()" listener="#{buttonView.printi}" update="txt_count"  interval="2"/>
+				
+				
+				
+			<p:commandButton value="Export" onclick="getVars()">
+
+
+			</p:commandButton>
+			
+			
+
+			<h:commandButton onclick="getVars()" value="sysout">
+				<f:ajax event="click" listener="#{buttonView.printi}" />
+			</h:commandButton>
+
+<h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+        <p:graphicImage library="img" name="pdf.png" />
+    </h:outputLink>
+    
+    
+     
+ 
+    
+    
+    
+ 
+ 
+ 
+ 
+ 
+ 
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+
+ 
+
+
+		</h:form>
+
+
+
+		<div id="map"></div>
+	</h:body>
+</ui:composition>

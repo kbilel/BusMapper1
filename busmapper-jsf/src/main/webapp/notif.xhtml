@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>BusMapper</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"></meta>
+		<meta charset="utf-8"></meta>
+		<style>
+html, body, #map {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
+		
+
+		
+	</h:head>
+	<h:body>
+<p:dock position="top">
+				<p:menuitem value="Home" icon="/resources/img/dockHome.png"
+					url="pages/Home.jsf" />
+				<p:menuitem value="Music"
+					icon="/resources/img/dockEmail.png" url="#{request.contextPath}/Home.jsf" />
+				<!-- more menuitems -->
+			</p:dock>
+			<br></br>
+			
+			<br></br>
+
+		<h:form >
+
+
+
+			<h3 style="margin-top:0">Client</h3>
+    <p:clock />
+ 
+    <h3>Server</h3>
+    <p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
+    <p:outputLabel value="Accessibilité des arrêts de bus RATP"></p:outputLabel>
+<iframe src="#{frameBean.frameMap}" width="100%" height="600" frameborder="0"></iframe>
+<br>
+</br>
+<iframe src="#{frameBean.frameTable}" width="100%" height="300" frameborder="0"></iframe>
+
+
+		</h:form>
+
+
+
+		<div id="map"></div>
+	</h:body>
+</ui:composition>

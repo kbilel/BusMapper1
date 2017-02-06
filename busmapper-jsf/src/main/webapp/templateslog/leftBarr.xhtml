@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                
+                
+                <div class="title_box">Tasks</div>
+      <ul class="left_menu">
+        <li class="odd"><a href="#{request.contextPath}/pages/client/listRecommendedProduct.jsf" >Recommended Product</a></li>
+        <li class="odd"><a href="#{request.contextPath}/pages/client/Requests.jsf" >Requests</a></li>
+        <li class="even"><h:form rendered="#{loginBean.commandeProd}"><a href="#{request.contextPath}/pages/client/recommendProduct.jsf" >recommend Product</a> </h:form></li>
+   
+        
+      </ul>
+      <div class="title_box">Auctions</div>
+      <div class="border_box">
+        <ul class="left_menu">
+        <li class="odd"><a href="#{request.contextPath}/pages/client/yankeeAuction.jsf?faces-redirect=true" >Yankee auction</a></li>
+        <li class="odd"><a href="#{request.contextPath}/pages/client/englishAuctions.jsf?faces-redirect=true" >English auction</a></li>
+        <li class="odd"><a href="#{request.contextPath}/pages/client/dutchAuctions.jsf?faces-redirect=true" >Dutch auction</a></li>
+        <li class="odd"><a href="#{request.contextPath}/pages/client/agregateAuctions.jsf?faces-redirect=true" >Agregate auction</a></li>
+        <li class="odd"><a href="#{request.contextPath}/pages/client/negociatedAuction.jsf?faces-redirect=true" >Negociate auction</a></li>
+        
+        
+      </ul>
+      </div>
+      <div class="title_box">Newsletter</div>
+      <div class="border_box">
+      <h:form rendered="#{loginBean.invitation}">
+      <h:inputText value="#{mailBean.to}"  styleClass="newsletter_input" pattern="^[a-zA-Z0-9-\_.]+@[a-zA-Z0-9-\_.]+\.[a-zA-Z0-9.]{2,5}$"/>
+      <p:commandButton value="join" update="displayInvit" oncomplete="PF('dlg').show()" action="#{mailBean.sendMail}" />
+       
+       
+        <p:dialog id="dialog" header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+<p:panel id="basic" header="Basic" footer="" style="margin-bottom:20px">       
+<h:panelGrid columns="1" id="displayInvit">
+        <h:outputLabel value="your email was sent successfully and you wi 2 tokens" />
+           <h:graphicImage library="img" name="goodJob.jpg"/> 
+           <h:commandButton id="tokenInvi" value="ok"  icon="ui-icon-check" action="#{loginBean.winTokenInvit()}" styleClass="boutonQuiz" style="
+                	  background: url(#{request.contextPath}/resources/img/quizIcone.png) no-repeat left;
+  height: 40px !important;
+  width: 100px !important;
+  margin-left: 35% !important;
+  margin-top: 10px !important;"  />
+        </h:panelGrid>
+  
+  </p:panel>
+    </p:dialog> 
+       
+       
+        </h:form>
+        </div>
+      
+<!--       <div class="banner_adds"> <a href="#"><img src="#{request.contextPath}/resources/img/bann2.jpg" alt="" border="0" /></a> </div> -->
+                </ui:composition>

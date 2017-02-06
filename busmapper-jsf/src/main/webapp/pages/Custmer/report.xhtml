@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"  >
+      
+      <h:head></h:head>
+<h:body>
+<h:form>
+ <div class="center_title_bar">Contact Us</div>
+              <h:form>
+      <div class="prod_box_big">
+        <div class="top_prod_box_big"></div>
+        <div class="center_prod_box_big">
+          <div class="contact_form">
+            <div class="form_row">
+              <label class="contact"><strong>Name:</strong></label>
+               <h:inputText value="#{mailContactBean.nom}" styleClass="contact_input"/>
+             
+            </div>
+            <div class="form_row">
+              <label class="contact"><strong>Email:</strong></label>
+              <h:inputText value="#{mailContactBean.compte}" styleClass="contact_input"/>
+            </div>
+            <div class="form_row">
+              <label class="contact"><strong>subjec:</strong></label>
+               <h:inputText value="#{mailContactBean.subject}" styleClass="contact_input"/>
+            </div>
+            <div class="form_row">
+              <label class="contact"><strong>password:</strong></label>
+               <h:inputSecret value="#{mailContactBean.motpasse}" styleClass="contact_input"/>
+            </div>
+            <div class="form_row">
+              <label class="contact"><strong>Message:</strong></label>
+               <h:inputTextarea value="#{mailContactBean.message}" styleClass="contact_textarea"/> 
+            </div>
+            <div class="form_row">  <h:commandLink value="send" action="#{mailContactBean.sendMail()}" styleClass="contact" />  </div>
+          </div>
+        </div>
+        <div class="bottom_prod_box_big"></div>
+      </div>
+           </h:form> 
+            
+</h:form>
+</h:body>
+</ui:composition>

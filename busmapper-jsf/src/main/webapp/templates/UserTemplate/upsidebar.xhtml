@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+      
+
+<nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#{request.contextPath}/mapsDashboard.jsf">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret"></b>
+                                    <span class="notification"><h:outputText
+											value="#{feedsbean.numberOfNotification}" /></span>
+                              </a>
+                            <ul class="dropdown-menu">
+									<ui:repeat value="#{loginBean.whoAmI().listNotif}" var="mylist">
+										<li><h:link
+												style="display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap"
+												value="#{mylist}" /></li>
+									</ui:repeat>
+								</ul>
+                        </li>
+                        
+                        <li>
+                           <a href="">
+                                <i ><h:outputText id="txt_count2" value="Real Time Position:  " />
+                                   
+                                       
+                                       </i>
+                            </a>
+                        </li>
+                         <li>
+                           <a href="">
+                            <h:outputText id="realtimeID" value="Lat  #{buttonView.lat} " />
+                        <h:outputText id="realtimeID2" value=" Lon  #{buttonView.lon}" />
+                            </a>
+                        </li>
+                        <li>
+                           <a href="">
+                            <h:outputText  value="Next Station : " />
+                            <h:outputText style="color:red;" id="realtimeNextStationID" value="#{buttonView.nextStop}" />
+                            </a>
+                        </li>
+                        
+                         <li>
+                           <a href="">
+                            <h:outputText  value="Time to arrive : " />
+                            <h:outputText style="color:red;" id="countTimeToArrive" value="#{buttonView.countTime}  minutes" />
+                            </a>
+                        </li>
+                      
+                    </ul>
+
+                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                         <h:outputText value="Welcome #{loginBean.whoAmI().userName}" />
+                        </li>
+                        <li class="dropdown">
+                      <h:outputText value="&#160;" />
+                        </li>
+                        <li>
+                             <h:form>
+                             <p:poll   process="@all" update=":realtimeID :realtimeNextStationID :countTimeToArrive :realtimeID2 "  interval="1"></p:poll>
+                        <h:commandLink value="Logout" action="#{loginBean.doDisconnect()}"  />
+                          </h:form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</ui:composition>

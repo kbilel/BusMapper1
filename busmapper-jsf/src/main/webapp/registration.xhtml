@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Login</title>
+		<meta http-equiv="X-UA-Compatible"
+			content="IE=EmulateIE7; IE=EmulateIE9" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+		<h:outputStylesheet library="css" name="styleregistrationform.css"></h:outputStylesheet>
+		<h:outputStylesheet library="css" name="demoregistrationform.css"></h:outputStylesheet>
+
+
+	</h:head>
+
+	<h:body>
+		<div class="container">
+
+			<div class="freshdesignweb-top">
+				<a href="Home.jsf" target="_blank">Home</a> <span class="right">
+					<a href="loginboot.jsf"> <strong>Already a Member ? </strong>
+				</a>
+				</span>
+				<div class="clr"></div>
+			</div>
+			<header>
+			<h1>
+				<span>BusMapper</span> Map Your Bus Online
+			</h1>
+			</header>
+			<div class="form">
+				<h:form id="contactform">
+
+					<p:messages id="msgs" style="width:415px;" />
+
+					<p class="contact">
+						<label for="name">Fullname</label>
+					</p>
+					<p:inputText id="name" placeholder="First and last name"
+						required="true" type="text" value="#{subscribeBean.fullname}">
+						<f:validateRequired for="name" />
+						<f:ajax render="msgs"></f:ajax>
+					</p:inputText>
+					<p:message for="name"></p:message>
+
+
+
+					<p class="contact">
+						<label for="email">Email</label>
+					</p>
+					<p:inputText id="email" name="email"
+					
+						placeholder="Example@domain.com" required="" type="text"
+						value="#{subscribeBean.email}">
+						    			<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />  
+
+						<f:validator binding="#{emailValidator}"></f:validator>
+
+
+						<f:ajax render="msgs" event="keyup"></f:ajax>
+
+
+					</p:inputText>
+					
+					
+
+
+					<p class="contact">
+						<label for="username">Username</label>
+					</p>
+					<p:inputText id="username" name="username" placeholder="Username"
+					
+						required="" type="text" value="#{subscribeBean.login}">
+						<f:validator binding="#{usernameValidator}"></f:validator>
+
+						<f:ajax render="msgs" event="keyup"></f:ajax>
+					</p:inputText>
+
+					<p class="contact">
+						<label for="age">Age</label>
+					</p>
+					<p:inputText id="age" name="age" validatorMessage="Age should be a valid number" placeholder="Age" required=""
+						type="text" value="#{subscribeBean.age}">
+						<f:validateDoubleRange minimum="0" maximum="100"></f:validateDoubleRange>
+						<f:ajax render="msgs" event="keyup"></f:ajax>
+					</p:inputText>
+					
+					
+
+					<p class="contact">
+						<label for="password">Create a password</label>
+					</p>
+					<p:inputText  type="password" id="password" name="password"
+					validatorMessage="Password should have at least 6 characters"
+					placeholder="Minimum  of 6 characters ..."
+						required="" 
+						value="#{subscribeBean.password}">
+						  <f:validateLength minimum="6" />
+						<f:ajax render="msgs" event="keyup"></f:ajax>
+					</p:inputText>
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+					
+
+
+					<p class="contact">
+						<label for="stations">Bus Station to follow </label>
+					</p>
+					<p:selectOneMenu class="select-style gender" id="stations"
+						value="#{subscribeBean.selectedStation}" style="width:125px">
+						<f:selectItems value="#{subscribeBean.cities}" />
+
+					</p:selectOneMenu>
+
+
+					<p class="contact">
+						<label for="repassword">Gender</label>
+					</p>
+					<p:selectOneMenu class="select-style gender" id="console"
+						value="#{subscribeBean.gender}" style="width:125px">
+						<f:selectItem itemLabel="Male" itemValue="Male" />
+						<f:selectItem itemLabel="Female " itemValue="Female" />
+						<f:selectItem itemLabel="Other" itemValue="Other" />
+
+					</p:selectOneMenu>
+
+					<p class="contact">
+						<label for="repassword">I'am a</label>
+					</p>
+					<p:selectOneMenu class="select-style gender" id="userType"
+						value="#{subscribeBean.userType}" style="width:125px">
+						<f:selectItem itemLabel="Student" itemValue="Student" />
+						<f:selectItem itemLabel="Employee " itemValue="Employee" />
+						<f:selectItem itemLabel="Other" itemValue="Other" />
+
+					</p:selectOneMenu>
+
+
+
+
+					<p class="contact">
+						<label for="phone">Mobile phone (+33)</label>
+					</p>
+					<p:inputText id="phone" name="phone" placeholder="Phone number"
+						value="#{subscribeBean.phoneNumber}"  type="text">
+					</p:inputText>
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<p:commandButton validateClient=""
+						style="background: #4b8df9;
+    display: inline-block;
+    padding: 5px 10px 6px;
+    color: #fbf7f7;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 3px #999;
+    -webkit-box-shadow: 0 1px 3px #999;
+    box-shadow: 0 1px 3px #999;
+    text-shadow: 0 -1px 1px #222;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: Verdana, Geneva, sans-serif;"
+						action="#{subscribeBean.doSubscribe()}" value="Sign me up ! " />
+
+					<!--            <p:inputText class="buttom" name="submit" id="submit" tabindex="5" value="Sign me up!" type="submit"></p:inputText> 	  -->
+
+
+				</h:form>
+			</div>
+		</div>
+
+	</h:body>
+</ui:composition>
+

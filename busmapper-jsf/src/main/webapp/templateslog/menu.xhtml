@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                
+                
+                <div class="left_menu_corner"></div>
+      <ul class="menu">
+        <li><a href="#{request.contextPath}/home.jsf" class="nav1"> Home</a></li>
+        <li class="divider"></li>
+        <li><a href="#{request.contextPath}/pages/client/catalogue.jsf" class="nav2">Products</a></li>
+        <li class="divider"></li>
+        <li><a href="#" class="nav3">auctions</a></li>
+        <li class="divider"></li>
+         <li><a href="#{request.contextPath}/pages/client/news.jsf" class="nav2">news</a></li>
+        <li class="divider"></li>
+        <li><h:form rendered="#{loginBean.quiz}"> <a href="#{request.contextPath}/pages/client/quiz.jsf" class="nav4" > quiz </a> </h:form></li>
+        <li class="divider"></li>
+        
+       <li> <h:form rendered="#{loginBean.connect}"><a href="#{request.contextPath}/pages/public/login.jsf" class="nav4">login</a></h:form></li>
+        <li class="divider"></li>
+        <li> <h:form rendered="#{loginBean.disconnecte}"> <h:commandLink value="disconnect" action="#{loginBean.disconnect()}" styleClass="nav4" /></h:form></li>
+        <li class="divider"></li>
+        <li><a href="#{request.contextPath}/pages/public/contact.jsf" class="nav6">Contact Us</a></li>
+        <li class="divider"></li>
+        <li><a href="#{request.contextPath}/pages/bookKeeper/Customers.jsf" class="nav6">Statistic</a></li>
+        <li class="divider"></li>
+        <li><a href="#{request.contextPath}/pages/public/chat.jsf" class="nav2">Chat</a></li>
+        <li class="divider"></li>
+        
+        
+       
+      </ul>
+      <div class="right_menu_corner"></div>
+
+                
+                </ui:composition>

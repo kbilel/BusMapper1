@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+               
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                
+                
+                
+              
+
+	<script type="text/javascript">
+var webSocket=new WebSocket("ws://localhost:8383/busmapper-jsf/chatroomServerEndpoint")
+
+webSocket.onmessage=function processMessage(message){
+	var jsonData=JSON.parse(message.data);
+	if(jsonData.message != null) messageTextArea.value+=jsonData.message +"\n";
+}
+
+function sendMessage() {
+	webSocket.send(messageText.value);
+	messageText.value="";
+	
+}
+	</script>
+
+
+	<textarea id="messageTextArea" readonly="readonly" rows="10"  cols ="45"></textarea><br/><br/>
+	<input type="text" id="messageText" size="50" /><br/><br/>
+	<input type="button" value="send"   onclick="sendMessage()" />
+
+</ui:composition>

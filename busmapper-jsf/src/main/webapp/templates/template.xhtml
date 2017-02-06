@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="PageTitle" />BusMapper find your bus
+		online Map it !!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+
+	<!-- Custom Theme files -->
+	<!-- 	<link href="#{request.contextPath}/resources/css/bootstrap.css" rel='stylesheet' type='text/css' /> -->
+	<!-- 	<link href="#{request.contextPath}/resources/css/style.css" rel='stylesheet' type='text/css' /> -->
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+
+	<h:outputScript library="js" name="jquery.min.js"></h:outputScript>
+
+	<!--webfonts-->
+	<!--   <LINK HREF='//FONTS.GOOGLEAPIS.COM/CSS?FAMILY=PT+MONO|ABRIL+FATFACE' REL='STYLESHEET' TYPE='TEXT/CSS'/> -->
+	<!--//webfonts-->
+	<h:outputScript library="js" name="move-top.js"></h:outputScript>
+	<h:outputScript library="js" name="easing.js"></h:outputScript>
+
+	<!--/script-->
+
+
+</h:head>
+<h:body>
+
+
+	<!--start-header-->
+	<div id="home" class="header two">
+		<ui:include src="/templates/topheader.xhtml" />
+	</div>
+	<!--//end-slider-->
+	
+	<div style="height: 100%">
+		<ui:insert name="Content" /> 
+<!-- 		 	<ui:include src="/templates/Content.xhtml" />  -->
+	</div>
+	
+	
+	<!--/contact-->
+	<div class="contact">
+		<ui:include src="/templates/footerContact.xhtml" />
+
+	</div>
+	<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="copy">
+				<p>
+					Copyright &copy; 2016 Taksi. All Rights Reserved | Design by <a
+						href="http://w3layouts.com/">W3layouts</a>
+				</p>
+			</div>
+
+		</div>
+	</div>
+
+	<a href="#home" id="toTop" class="scroll" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+
+
+</h:body>
+</html>

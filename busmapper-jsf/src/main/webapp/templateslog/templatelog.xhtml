@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<h:head>
+	<h:outputStylesheet library="css" name="style2.css"></h:outputStylesheet>
+<title><ui:insert name="PageTitle"/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<!-- <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/style.css" /> -->
+<link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/iecss.css" />
+
+<link rel="icon" href="#{request.contextPath}/resources/img/favicon.ico" type="image/x-icon"/>
+
+ <h:outputScript library="js" name="boxOver.js"/>
+ <ui:insert name="PageHead"/>
+	</h:head>
+	<h:body>
+	
+	<div id="main_container">
+	
+	<div class="top_bar"> <ui:include src="/templates/topBar.xhtml" />  </div>
+	
+	
+	
+	<div id="header">   <ui:include src="/templates/slide.xhtml" /> 	</div>
+	
+
+	
+	
+	<div id="main_content">
+	
+	<div id="menu_tab">  <ui:include src="/templates/menu.xhtml" /> </div>
+	
+	<div class="left_content"> <ui:include src="/templates/leftBarr.xhtml" />  </div>
+	
+	
+	
+	<div class="center_content">  <ui:insert name="PageContent"/>
+	  </div>
+	
+	
+	 <div class="right_content">  <ui:include src="/templates/rightBar.xhtml" />  </div>
+	
+	</div>
+	
+	<div class="footer"> <ui:include src="/templates/footer.xhtml" />  </div>
+	
+	</div>
+	
+	</h:body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"  >
+		<h:head></h:head> 
+<body> 
+		<h:form>
+    <p:growl id="msg" />
+ 
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+        <h:outputText value="Basic: " />
+        <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+ 
+        <h:outputText value="Ajax: " />
+        <p:selectBooleanCheckbox value="#{selectBooleanView.value2}">
+            <p:ajax update="msg" listener="#{selectBooleanView.addMessage}" />
+        </p:selectBooleanCheckbox>
+    </h:panelGrid>
+ 
+    <p:commandButton value="Submit" icon="ui-icon-check" update="display" oncomplete="PF('dlg').show()" />
+ 
+    <p:dialog header="Values" modal="true" resizable="false" showEffect="fade" widgetVar="dlg">
+        <h:panelGrid columns="1" id="display">
+            <h:outputText value="Value 1: #{selectBooleanView.value1}" />
+            <h:outputText value="Value 2: #{selectBooleanView.value2}" />
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+</body> 
+</ui:composition>
+

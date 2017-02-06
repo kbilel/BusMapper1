@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="busmapper-ejb">
+		<jta-data-source>java:/busmapperJNDI</jta-data-source>
+		<class>fr.philae.busmapper.domain.Agency</class>
+		<class>fr.philae.busmapper.domain.Calendar</class>
+		<class>fr.philae.busmapper.domain.Feed</class>
+		<class>fr.philae.busmapper.domain.Stops</class>
+		<class>fr.philae.busmapper.domain.Stoptimes</class>
+		<class>fr.philae.busmapper.domain.Trips</class>
+		<class>fr.philae.busmapper.domain.Tripstop</class>
+		<class>fr.philae.busmapper.domain.User</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
+			
+		</properties>
+	</persistence-unit>
+</persistence>

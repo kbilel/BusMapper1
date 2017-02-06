@@ -1,0 +1,276 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png"
+		href="#{request.contextPath}/resources/userTemplateResource/img/favicon.ico"></link>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Statistic</title>
+
+	<meta
+		content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+		name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+
+
+	<script
+		src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry"></script>
+
+
+	<h:outputScript library="js" name="busmapper.js"></h:outputScript>
+
+	<!-- Bootstrap core CSS     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/bootstrap.min.css"
+		rel="stylesheet"></link>
+
+	<!-- Animation library for notifications   -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/animate.min.css"
+		rel="stylesheet"></link>
+
+	<!--  Light Bootstrap Table core CSS    -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/light-bootstrap-dashboard.css"
+		rel="stylesheet"></link>
+
+
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/demo.css"
+		rel="stylesheet" />
+
+
+	<!--     Fonts and icons     -->
+	<link
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+		rel="stylesheet"></link>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
+		rel='stylesheet' type='text/css'></link>
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/pe-icon-7-stroke.css"
+		rel="stylesheet"></link>
+
+</h:head>
+<h:body>
+
+
+	<div class="wrapper">
+		<ui:include src="/templates/UserTemplate/lefsidebar.xhtml" />
+
+		<div class="main-panel">
+			<ui:include src="/templates/UserTemplate/upsidebar.xhtml" />
+
+
+
+
+			<h:form>
+				<p:growl id="growl" showDetail="true" />
+
+				<h:panelGrid columns="2" columnClasses="left,right"
+					style="width:100%">
+					<p:chart type="pie" model="#{chartView.pieModel1}"
+						style="width:400px;height:300px" />
+
+					<p:chart type="pie" model="#{chartView.pieModel2}"
+						style="width:400px;height:300px" />
+
+					<p:chart type="bar" model="#{chartUserType.barModel}"
+						style="height:300p; margin: 0 auto" />
+					<p:chart type="bar" model="#{chartUserAge.barModel}"
+						style="height:300p; margin: 0 auto" />
+
+
+				</h:panelGrid>
+				<br></br>
+			
+
+
+				<p:separator style="width:800px;height:5px" />
+
+
+
+				<!-- start report downloader -->
+				<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;"/>
+				<h3>  Download report of customers account choose the format:</h3>
+				<h:outputText value="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+				
+				" /><h:commandLink>
+					<h:graphicImage library="img" name="excel.png" title="xls" />
+					<p:dataExporter type="xls" target="tbl" fileName="orders"
+						pageOnly="true" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<h:graphicImage library="img" name="pdf.png" title="pdf" />
+					<p:dataExporter type="pdf" target="tbl" fileName="orders"
+						pageOnly="true" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<h:graphicImage library="img" name="csv.png" title="csv" />
+					<p:dataExporter type="csv" target="tbl" fileName="orders"
+						pageOnly="true" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<h:graphicImage library="img" name="xml.png" title="xml" />
+					<p:dataExporter type="xml" target="tbl" fileName="orders"
+						pageOnly="true" />
+				</h:commandLink>
+
+<p:separator style="width:800px;height:5px" />
+
+				<!-- 			End report downloader -->
+
+
+				<div class="content table-responsive table-full-width"></div>
+				<p:dataTable rows="30" class="table table-hover table-striped"
+					border="1" value="#{customerBean.users}" var="user"
+					resizeMode="expand" paginator="true"
+					filteredValue="#{customerBean.usersFiltred}" id="tbl">
+
+
+
+					<p:column width="10">
+
+						<f:facet name="header">Id</f:facet>
+#{user.id}
+</p:column>
+					<p:column width="55" filterBy="#{user.fullName}">
+						<f:facet name="header">Fullname</f:facet>
+
+
+						<h:outputText value="#{user.fullName}">
+						</h:outputText>
+
+					</p:column>
+					<p:column width="40" filterBy="#{user.userName}">
+						<f:facet name="header">Username</f:facet>
+
+
+						<h:outputText value="#{user.userName}">
+						</h:outputText>
+
+					</p:column>
+					<p:column width="75" filterBy="#{user.adress}">
+						<f:facet name="header">Adress</f:facet>
+
+
+						<h:outputText value="#{user.adress}">
+						</h:outputText>
+
+					</p:column>
+					<p:column width="75" filterBy="#{user.age}">
+						<f:facet name="header">Age</f:facet>
+
+
+						<h:outputText value="#{user.age}">
+						</h:outputText>
+
+					</p:column>
+
+
+					<p:column width="75" filterBy="#{user.gender}">
+						<f:facet name="header">Gender</f:facet>
+
+
+						<h:outputText value="#{user.gender}">
+						</h:outputText>
+
+					</p:column>
+
+
+					<p:column width="50">
+						<p:commandButton value="delete">
+							<f:ajax listener="#{customerBean.doDeleteUser(user)}"
+								render="tbl" />
+						</p:commandButton>
+					</p:column>
+
+
+
+
+
+
+
+
+				</p:dataTable>
+				<br></br>
+				<br></br>
+
+
+			</h:form>
+
+
+
+
+
+
+
+
+
+
+
+			<ui:include src="/templates/UserTemplate/footer.xhtml" />
+
+
+		</div>
+	</div>
+
+</h:body>
+
+<!--   Core JS Files   -->
+<!-- <script -->
+<!-- 	src="#{request.contextPath}/resources/userTemplateResource/js/jquery-1.10.2.js" -->
+<!-- 	type="text/javascript"></script> -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/demo.js"></script>
+
+</html>

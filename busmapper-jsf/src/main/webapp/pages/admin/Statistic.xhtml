@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head></h:head>
+	<h:body>
+	
+	<p:dock position="top">
+				<p:menuitem value="Home" icon="/resources/img/dockHome.png"
+					url="pages/Home.jsf" />
+				<p:menuitem value="Music"
+					icon="/resources/img/dockEmail.png" url="#{request.contextPath}/Home.jsf" />
+				<!-- more menuitems -->
+			</p:dock>
+		<h:form>
+    <p:growl id="growl" showDetail="true" />
+ 
+    <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+       <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+             
+        <p:chart type="pie" model="#{chartView.pieModel2}" style="width:400px;height:300px" />
+
+ <p:chart type="bar" model="#{chartUserType.barModel}" style="height:300p; margin: 0 auto"/>
+  <p:chart type="bar" model="#{chartUserAge.barModel}" style="height:300p; margin: 0 auto"/>
+    
+       
+    </h:panelGrid>
+    <br></br>
+    <br></br>
+    <br></br>
+    
+    
+			<p:separator style="width:800px;height:5px" />
+			
+    <p:dataTable  border="1" value="#{customerBean.users}" var="user" 
+    resizeMode="expand"
+			paginator="true" 
+		
+			filteredValue="#{customerBean.usersFiltred}"
+			id="tbl"
+			>
+
+				<p:column width="10">
+
+					<f:facet name="header">Id</f:facet>
+#{user.id}
+</p:column>
+				<p:column width="55" filterBy="#{user.fullName}">
+					<f:facet name="header" >Fullname</f:facet>
+					
+					
+					<h:outputText value="#{user.fullName}">
+					</h:outputText>
+
+				</p:column>
+				<p:column width="40" filterBy="#{user.userName}">
+					<f:facet name="header">Username</f:facet>
+					
+					
+					<h:outputText value="#{user.userName}">
+					</h:outputText>
+
+				</p:column>
+				<p:column width="75" filterBy="#{user.adress}">
+					<f:facet name="header">Adress</f:facet>
+					
+					
+					<h:outputText value="#{user.adress}">
+					</h:outputText>
+
+				</p:column>
+					<p:column width="75" filterBy="#{user.age}">
+					<f:facet name="header">Age</f:facet>
+					
+					
+					<h:outputText value="#{user.age}">
+					</h:outputText>
+
+				</p:column>
+				
+					
+					<p:column width="75" filterBy="#{user.gender}">
+					<f:facet name="header">Gender</f:facet>
+					
+					
+					<h:outputText value="#{user.gender}">
+					</h:outputText>
+
+				</p:column>
+				
+				
+				<p:column width="50">
+					<p:commandButton value="delete" 
+						action="#{customerBean.doDeleteUser(user)}">
+
+					</p:commandButton >
+				</p:column>
+				
+				
+		
+
+		
+    
+
+				
+			</p:dataTable>
+			  <br></br>
+			    <br></br>
+					<p:separator style="width:800px;height:5px" />
+
+
+			<h3>Download report of customers account choose the format:</h3>
+			<h:commandLink>
+				<h:graphicImage library="img" name="excel.png" title="xls" />
+				<p:dataExporter type="xls" target="tbl" fileName="orders"
+					pageOnly="true" />
+			</h:commandLink>
+
+			<h:commandLink>
+				<h:graphicImage library="img" name="pdf.png" title="pdf" />
+				<p:dataExporter type="pdf" target="tbl" fileName="orders"
+					pageOnly="true" />
+			</h:commandLink>
+
+			<h:commandLink>
+				<h:graphicImage library="img" name="csv.png" title="csv" />
+				<p:dataExporter type="csv" target="tbl" fileName="orders"
+					pageOnly="true" />
+			</h:commandLink>
+
+			<h:commandLink>
+				<h:graphicImage library="img" name="xml.png" title="xml" />
+				<p:dataExporter type="xml" target="tbl" fileName="orders"
+					pageOnly="true" />
+			</h:commandLink>
+
+</h:form>
+	</h:body>
+</ui:composition>

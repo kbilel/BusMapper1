@@ -1,0 +1,152 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png"
+		href="#{request.contextPath}/resources/userTemplateResource/img/favicon.ico"></link>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Chat with others</title>
+
+	<meta
+		content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+		name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+<script type="text/javascript">
+var webSocket=new WebSocket("ws://localhost:8383/busmapper-web/chatroomServerEndpoint")
+
+webSocket.onmessage=function processMessage(message){
+	var jsonData=JSON.parse(message.data);
+	if(jsonData.message != null) messageTextArea.value+=jsonData.message +"\n";
+}
+
+function sendMessage() {
+	webSocket.send(messageText.value);
+	messageText.value="";
+	
+}
+	</script>
+	
+	
+	<script
+		src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry"></script>
+
+
+	<h:outputScript library="js" name="busmapper.js"></h:outputScript>
+	
+	<!-- Bootstrap core CSS     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/bootstrap.min.css"
+		rel="stylesheet"></link>
+
+	<!-- Animation library for notifications   -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/animate.min.css"
+		rel="stylesheet"></link>
+
+	<!--  Light Bootstrap Table core CSS    -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/light-bootstrap-dashboard.css"
+		rel="stylesheet"></link>
+
+
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/demo.css"
+		rel="stylesheet" />
+
+
+	<!--     Fonts and icons     -->
+	<link
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+		rel="stylesheet"></link>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
+		rel='stylesheet' type='text/css'></link>
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/pe-icon-7-stroke.css"
+		rel="stylesheet"></link>
+
+</h:head>
+<h:body>
+
+
+	<div class="wrapper">
+		<ui:include src="/templates/UserTemplate/lefsidebar.xhtml" />
+
+		<div class="main-panel">
+			<ui:include src="/templates/UserTemplate/upsidebar.xhtml" />
+
+
+	
+ 
+
+ 
+
+
+
+ 
+
+	<div class="col-md-8">
+										<img class="avatar border-gray" src="#{request.contextPath}/resources/loginRessource/img/chat.png"/>
+	
+							
+						</div>
+		
+
+<div>
+<br></br>
+<br></br>
+<br></br>
+
+<h:outputText class="text-danger" value="Type  a nickname to start chatting with other passenger " /><br></br><br></br>
+	<textarea id="messageTextArea" readonly="readonly" rows="10"  cols ="45"></textarea><br/><br/>
+	<p:inputText  type="text" id="messageText" size="37" /><br/><br/>
+	<p:commandButton  value="send"   onclick="sendMessage()" />
+
+</div>
+			
+
+		</div>
+	</div>
+
+</h:body>
+
+<!--   Core JS Files   -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/jquery-1.10.2.js"
+	type="text/javascript"></script>
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/demo.js"></script>
+
+</html>

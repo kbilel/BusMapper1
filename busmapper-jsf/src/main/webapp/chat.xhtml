@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>BusMapper</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"></meta>
+		<meta charset="utf-8"></meta>
+	<script type="text/javascript">
+var webSocket=new WebSocket("ws://localhost:8383/busmapper-web/chatroomServerEndpoint")
+
+webSocket.onmessage=function processMessage(message){
+	var jsonData=JSON.parse(message.data);
+	if(jsonData.message != null) messageTextArea.value+=jsonData.message +"\n";
+}
+
+function sendMessage() {
+	webSocket.send(messageText.value);
+	messageText.value="";
+	
+}
+	</script>
+
+	</h:head>
+	<h:body>
+	<p:toolbar id="tb">
+    <f:facet name="left">
+        <p:commandButton class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" type="button" value="New" icon="ui-icon-document" />
+        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>
+    </f:facet>
+    <f:facet name="right">
+        <p:commandButton type="button" title="Save" icon="ui-icon-disk"/>
+        <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>
+        <p:commandButton type="button" title="Print" icon="ui-icon-print"/>
+    </f:facet>
+</p:toolbar>
+ 
+<div style="height:800px"></div>
+ 
+<p:sticky target="tb" />
+
+
+	<textarea id="messageTextArea" readonly="readonly" rows="10"  cols ="45"></textarea><br/><br/>
+	<p:inputText type="text" id="messageText" size="50" /><br/><br/>
+	<p:commandButton  value="send"   onclick="sendMessage()" />
+
+		
+	</h:body>
+</ui:composition>

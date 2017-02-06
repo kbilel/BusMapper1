@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+      
+
+<div class="top-header">
+						<div class="container">
+					     <div class="top-menu">
+							<span class="menu"> </span>
+								<ul class="cl-effect-16">
+								 <li><a  class="active" href="#{request.contextPath}/pages/index.jsf" data-hover="Home">Home</a></li>
+								<li><a  href="#{request.contextPath}/pages/about.jsf" data-hover="About">About</a></li>
+								<li><a  href="#{request.contextPath}/pages/service.jsf" data-hover="Services">Services</a></li>
+								
+					
+								
+								<li><a href="#{request.contextPath}/loginboot.jsf" data-hover="Login">Login</a></li>
+								<li><a href="#{request.contextPath}/registration.jsf" data-hover="SignUp">SignUp</a></li>
+								<li><a href="#{request.contextPath}/pages/contact.jsf" data-hover="Contact">Contact</a></li>
+<!-- 								<li><a href="#{request.contextPath}/Stoptable.jsf" data-hover="StopTable">StopTable</a></li> -->
+<!-- 								<li><a href="#{request.contextPath}/direction3.jsf" data-hover="TraceStation">TraceStation</a></li> -->
+<!-- 								<li><a href="#{request.contextPath}/pages/admin/Statistic.jsf" data-hover="Statistic">Statistic</a></li> -->
+<!-- 								<li><a href="#{request.contextPath}/notif.jsf" data-hover="Station">Station</a></li> -->
+<!-- 								<li><h:form rendered="#{loginBean.userConnected}"><a href="#{request.contextPath}/chat.jsf" data-hover="chat">Chat</a></h:form></li> -->
+								  <div class="clearfix"></div>
+								</ul>
+							</div>
+							<div class="logo two">
+							  <a href="index.xhtml"><h1>Bus<span>Mapper</span></h1></a>
+						    </div>
+							<!-- script-for-menu -->
+								<script>
+									$("span.menu").click(function(){
+										$(".top-menu ul").slideToggle("slow" , function(){
+										});
+									});
+								</script>
+								<!-- script-for-menu -->
+							<div class="clearfix"> </div>
+					</div>
+				</div>
+</ui:composition>

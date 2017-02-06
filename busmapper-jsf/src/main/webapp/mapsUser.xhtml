@@ -1,0 +1,275 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	
+
+<!-- start traffic inf -->
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <link rel="stylesheet" type="text/css"
+    href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+  <script type="text/javascript" charset="UTF-8"
+    src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+    src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+<!-- end traffic    inf  -->
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png"
+		href="#{request.contextPath}/resources/userTemplateResource/img/favicon.ico"></link>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>My map</title>
+	
+
+	<meta
+		content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+		name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+
+	
+
+
+	
+	<!-- Bootstrap core CSS     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/bootstrap.min.css"
+		rel="stylesheet"></link>
+
+	<!-- Animation library for notifications   -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/animate.min.css"
+		rel="stylesheet"></link>
+
+	<!--  Light Bootstrap Table core CSS    -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/light-bootstrap-dashboard.css"
+		rel="stylesheet"></link>
+
+
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/demo.css"
+		rel="stylesheet" />
+
+
+	<!--     Fonts and icons     -->
+	<link
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+		rel="stylesheet"></link>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
+		rel='stylesheet' type='text/css'></link>
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/pe-icon-7-stroke.css"
+		rel="stylesheet"></link>
+
+</h:head>
+<h:body>
+
+
+	<div class="wrapper">
+		<ui:include src="/templates/UserTemplate/lefsidebar.xhtml" />
+
+		<div class="main-panel">
+			<ui:include src="/templates/UserTemplate/upsidebar.xhtml" />
+
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Edit Profile</h4>
+                            </div>
+                            <div class="content">
+                                <h:form>
+                                    <div class="row">
+
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                            
+                                            
+                                                <label>Username</label>
+                                             
+                                                <input type="text" class="form-control"  disabled="true" placeholder="Username" value="#{loginBean.login}"></input><br></br>
+                                                
+<!--                                                 <h:inputText  placeholder="feeds" value="#{loginBean.whoAmI().userName}"/> -->
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address   </label>
+                                                
+                                                <h:outputText value="   #{loginBean.email}" />
+<!--                                                 updateemail -->
+<!--                                                 <h:inputText  type="email" required="true" class="form-control" placeholder="Email" value="#{loginBean.emailUpdate}"></h:inputText> -->
+                                                 <h:inputText  type="email"  required="true" class="form-control" placeholder="Email" value="#{loginBean.whoAmI().email}"></h:inputText>
+                                               
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                   
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>FullName</label>
+                                                <input type="text" class="form-control" placeholder="Last Name" value="#{loginBean.fullname}"></input>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Station Followed</label>
+                                                <input type="text" disabled="true" class="form-control" placeholder="City" value="#{loginBean.userStation}"></input>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control" placeholder="Home Address" value="23 rue du Départ, Boîte 37
+75014 PARIS "></input>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Follow Another Station</label>
+                                                <p:selectOneMenu styleClass="height: 290px;width: 280px;" class="form-control" id="userStationChange" value="#{loginBean.userStation}" style="width:125px">
+         <f:selectItems value="#{feedsbean.mycities}" />
+           
+        </p:selectOneMenu>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Country</label>
+                                                <input type="text" class="form-control" placeholder="Country" value="France"></input>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Postal Code</label>
+                                                <input type="number" class="form-control" placeholder="ZIP Code" value="75017"> </input>	
+                                            </div>
+                                        </div>
+                                    </div>
+
+<!--                                     <div class="row"> -->
+<!--                                         <div class="col-md-12"> -->
+<!--                                             <div class="form-group"> -->
+<!--                                                 <label>Notes</label> -->
+<!--                                                 <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+
+                                    <h:commandButton class="btn btn-info btn-fill pull-right" value="Update Profile" action="#{loginBean.updtae()}" /> 
+                                   
+                                    <div class="clearfix"></div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="image">
+                            
+                          
+                                <img src="http://i.imgur.com/EkCAl9S.jpg?1" alt="..."/>
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a href="#">
+                                    <img class="avatar border-gray" src="#{request.contextPath}/resources/userTemplateResource/img/faces/face.jpg" alt="..."/>
+
+                                      <h4 class="title"> 
+                                         <b><h:outputText  type="text" class="form-control" placeholder="Last Name" value="#{loginBean.login}"></h:outputText></b>
+                                      </h4>
+                                    </a>
+                                </div>
+	<!--                                 <p class="description text-center"> "Lamborghini Mercy <br></br> -->
+	<!--                                                     Your chick she so thirsty <br></br> -->
+	<!--                                                     I'm in that two seat Lambo" -->
+	<!--                                 </p> -->
+                            </div>
+                            <hr></hr>
+                            <div class="text-center">
+                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+	
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+		
+
+
+			
+
+		</div>
+	</div>
+
+</h:body>
+
+<!--   Core JS Files   -->
+
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/demo.js"></script>
+</html>

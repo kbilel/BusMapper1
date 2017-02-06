@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
+      
+
+<div class="sidebar" data-color="purple" data-image="#{request.contextPath}/resources/userTemplateResource/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Map Your Bus Freely :-)
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="#{request.contextPath}/mapsDashboard.jsf">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#{request.contextPath}/mapsUser.jsf">
+                        <i class="pe-7s-user"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+               
+                <li>                           
+                    <a href="#{request.contextPath}/mapsStopStation.jsf">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Station Buble </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#{request.contextPath}/mapsBusTour.jsf">
+                        <i class="pe-7s-play"></i>
+                        <p>Start a tourist tour</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#{request.contextPath}/maps.jsf">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Maps</p>
+                    </a>
+                </li>
+                     
+                
+				<li class="Map your Bus ">
+                    <a href="#{request.contextPath}/mapsDirection.jsf">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Quick direction !</p>
+                    </a>
+                </li>
+                
+                <li class="notifications.html ">
+                 <h:form rendered="#{loginBean.userConnected}">   <a href="#{request.contextPath}/mapsChat.jsf">
+                        <i class="pe-7s-chat"></i>
+                        <p>Chat with passenger</p>
+                    </a>
+                    </h:form>
+                </li>
+<!--                 <li class="notifications.html "> -->
+<!--                     <a href="#{request.contextPath}/mapsStatistic.jsf"> -->
+<!--                         <i class="pe-7s-display1"></i> -->
+<!--                         <p>Statistic</p> -->
+<!--                     </a> -->
+<!--                 </li> -->
+<!--                  <li> -->
+<!--                     <a href="table.html"> -->
+<!--                         <i class="pe-7s-note2"></i> -->
+<!--                         <p>Table List</p> -->
+<!--                     </a> -->
+<!--                 </li> -->
+  <li>
+                    <a href="#{request.contextPath}/mapsTrips.jsf">
+                        <i class="pe-7s-angle-up-circle"></i>
+                        <p>Trips</p>
+                    </a>
+                </li>
+	                <li>
+	                    <a href="#{request.contextPath}/mapsNotification.jsf">
+	                        <i class="pe-7s-bell"></i>
+	                        <p>Notifications</p>
+	                    </a>
+	                </li>
+	               
+            </ul>
+    	</div>
+    </div>
+</ui:composition>

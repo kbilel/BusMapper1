@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.philae.busmapper</groupId>
+  <artifactId>busmapper-ejb</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>ejb</packaging> <dependencies>
+<dependency>
+  		<groupId>javax</groupId>
+  		<artifactId>javaee-api</artifactId>
+  		<version>7.0</version>
+  		<scope>provided</scope>
+  	</dependency>
+	</dependencies>
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<defaultGoal>clean install wildfly:deploy</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+				<configuration>
+					<port>9997</port>
+				<filename>${project.artifactId}.jar</filename>
+				</configuration>
+				
+			</plugin>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<configuration>
+					<ejbVersion>3.2</ejbVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+	</build>
+
+</project>

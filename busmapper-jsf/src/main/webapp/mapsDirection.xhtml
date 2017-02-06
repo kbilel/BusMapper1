@@ -1,0 +1,161 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png"
+		href="#{request.contextPath}/resources/userTemplateResource/img/favicon.ico"></link>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Find my bus Station</title>
+
+	<meta
+		content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+		name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+
+	<link
+		href="http://code.google.com/apis/maps/documentation/javascript/examples/standard.css"
+		rel="stylesheet" type="text/css"></link>
+
+
+	<script type="text/javascript"
+		src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+	<h:outputScript library="js" name="json2.js"></h:outputScript>
+	<h:outputScript library="js" name="v3_PolylineEncoder.js"></h:outputScript>
+	<h:outputScript library="js" name="line58.js"></h:outputScript>
+	<h:outputScript library="js" name="busstop.js"></h:outputScript>
+	<h:outputScript library="js" name="directionFinder.js"></h:outputScript>
+
+	<!-- Bootstrap core CSS     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/bootstrap.min.css"
+		rel="stylesheet"></link>
+
+	<!-- Animation library for notifications   -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/animate.min.css"
+		rel="stylesheet"></link>
+
+	<!--  Light Bootstrap Table core CSS    -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/light-bootstrap-dashboard.css"
+		rel="stylesheet"></link>
+
+
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/demo.css"
+		rel="stylesheet" />
+
+
+	<!--     Fonts and icons     -->
+	<link
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+		rel="stylesheet"></link>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300'
+		rel='stylesheet' type='text/css'></link>
+	<link
+		href="#{request.contextPath}/resources/userTemplateResource/css/pe-icon-7-stroke.css"
+		rel="stylesheet"></link>
+
+</h:head>
+<h:body onload="initialize()">
+
+
+	<div class="wrapper">
+		<ui:include src="/templates/UserTemplate/lefsidebar.xhtml" />
+
+		<div class="main-panel">
+			<ui:include src="/templates/UserTemplate/upsidebar.xhtml" />
+
+			<div id="map">
+				<table border="1" style="height: 100%; width: 100%">
+					<tr>
+						<td style="height: 100%; width: 70%" valign="top">
+							<div id="map_canvas"
+								style="float: left; width: 100%; height: 100%"></div>
+						</td>
+						<td style="height: 100%; width: 30%" valign="top"><select
+							onchange="calcRoute();" id="travel-mode-input">
+								<option value="DRIVING" selected="selected">By car</option>
+								<option value="BICYCLING">Bicycling</option>
+								<option value="WALKING">Walking</option>
+								<option value="TRANSIT">Transit</option>
+						</select> <!-- 
+Provide alternate routes: <input type="checkbox" id="provide_alternates" />
+<div id="select_alternate"></div>
+--> <p:commandButton value="Get Directions" onclick="calcRoute();" /> <h:form
+								id="directionsForm" action=""
+								onsubmit="/* showAddress();*/ return false"> 
+Start Address:<br></br>
+
+								<input id="search1" size="60" type="text"
+									value="18 Rue Lhomond, 75005 Paris, France"> </input>
+
+								<!--      <input type="submit" value="Start" onclick="showAddress('1');" />  -->
+								<br></br> 
+End Address:<br></br>
+
+								<input id="search2" size="60" type="text"
+									value="34-36 Rue du Fer À Moulin, 75005 Paris, France"></input>
+
+								<!--     <input type="submit" value="End" onclick="showAddress('2');" />  -->
+								<br></br>
+								<div id="directionsPanel" style="width: 100%; height: 100%">
+								</div>
+							</h:form></td>
+					</tr>
+				</table>
+				<div>
+					<p>
+						Total Distance: <span id="total"></span>
+					</p>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+</h:body>
+
+<!--   Core JS Files   -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/jquery-1.10.2.js"
+	type="text/javascript"></script>
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/demo.js"></script>
+
+</html>
